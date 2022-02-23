@@ -6,56 +6,52 @@ first_reel_stacks = [[0], [0, 0], [0, 0, 0],
                      [2], [2, 2], [2, 2, 2],
                      [3], [3, 3], [3, 3, 3],
                      [4], [4, 4], [4, 4, 4]]
-first_reel_number_of_stacks = [5, 3, 1,
-                               7, 4, 2,
-                               9, 5, 3,
-                               16, 8, 4,
-                               16, 8, 4]
-
+first_reel_number_of_stacks = [7, 4, 1,
+                               9, 6, 1,
+                               10, 8, 2,
+                               14, 9, 3,
+                               14, 9, 3]
 second_reel_stacks = [[0], [0, 0], [0, 0, 0],
                       [1], [1, 1], [1, 1, 1],
                       [2], [2, 2], [2, 2, 2],
                       [3], [3, 3], [3, 3, 3],
-                      [4], [4, 4], [4, 4, 4],]
-second_reel_number_of_stacks = [5, 3, 1,
-                               7, 4, 2,
-                               9, 5, 3,
-                               16, 8, 4,
-                               16, 8, 4]
-
+                      [4], [4, 4], [4, 4, 4]]
+second_reel_number_of_stacks = [7, 4, 1,
+                               9, 6, 1,
+                               10, 8, 2,
+                               14, 9, 3,
+                               14, 9, 3]
 third_reel_stacks = [[0], [0, 0], [0, 0, 0],
                      [1], [1, 1], [1, 1, 1],
                      [2], [2, 2], [2, 2, 2],
                      [3], [3, 3], [3, 3, 3],
                      [4], [4, 4], [4, 4, 4]]
 
-third_reel_number_of_stacks = [5, 3, 1,
-                               7, 4, 2,
-                               9, 5, 3,
-                               16, 8, 4,
-                               16, 8, 4]
-
+third_reel_number_of_stacks = [7, 4, 1,
+                               9, 6, 1,
+                               10, 8, 2,
+                               14, 9, 3,
+                               14, 9, 3]
 fourth_reel_stacks = [[0], [0, 0], [0, 0, 0],
                       [1], [1, 1], [1, 1, 1],
                       [2], [2, 2], [2, 2, 2],
                       [3], [3, 3], [3, 3, 3],
                       [4], [4, 4], [4, 4, 4]]
-fourth_reel_number_of_stacks = [5, 3, 1,
-                               7, 4, 2,
-                               9, 5, 3,
-                               16, 8, 4,
-                               16, 8, 4]
-
+fourth_reel_number_of_stacks = [7, 4, 1,
+                               9, 6, 1,
+                               10, 8, 2,
+                               14, 9, 3,
+                               14, 9, 3]
 fifth_reel_stacks = [[0], [0, 0], [0, 0, 0],
                      [1], [1, 1], [1, 1, 1],
                      [2], [2, 2], [2, 2, 2],
                      [3], [3, 3], [3, 3, 3],
                      [4], [4, 4], [4, 4, 4]]
-fifth_reel_number_of_stacks = [5, 3, 1,
-                               7, 4, 2,
-                               9, 5, 3,
-                               16, 8, 4,
-                               16, 8, 4]
+fifth_reel_number_of_stacks = [7, 4, 1,
+                               9, 6, 1,
+                               10, 8, 2,
+                               14, 9, 3,
+                               14, 9, 3]
 
 
 def create_weights(reel, weight_to_input, wild_symbol, wild_weight, window_height, reel_number):
@@ -97,7 +93,7 @@ def create_weights(reel, weight_to_input, wild_symbol, wild_weight, window_heigh
 
 
             if (reel_number == 1):
-                if reach_pic_counter == 0:
+                if cheap_pic_counter == 2 and (1 in window):
                     weight[i] += 1
                     weight_to_input -= 1
                 if weight_to_input <= 0:
@@ -105,20 +101,18 @@ def create_weights(reel, weight_to_input, wild_symbol, wild_weight, window_heigh
 
 
             if (reel_number == 2):
-                if reach_pic_counter == 3:
-                    weight[i] += 4
-                    weight_to_input -= 4
+                if cheap_pic_counter == 2 and (0 in window):
+                    weight[i] += 1
+                    weight_to_input -= 1
                 if weight_to_input <= 0:
                     break
 
 
             if (reel_number == 3):
-                if cheap_pic_counter == 2:
-                    weight[i] += 3
-                    weight_to_input -= 3
-                if cheap_pic_counter == 3:
-                    weight[i] += 2
-                    weight_to_input -= 2
+                if cheap_pic_counter == 2 and (0 in window):
+                    weight[i] += 1
+                    weight_to_input -= 1
+
 
                 if weight_to_input <= 0:
                     break
@@ -126,8 +120,9 @@ def create_weights(reel, weight_to_input, wild_symbol, wild_weight, window_heigh
 
             if (reel_number == 4):
                 if reach_pic_counter == 3:
-                    weight[i] += 4
-                    weight_to_input -= 4
+                    weight[i] += 1
+                    weight_to_input -= 1
+
 
                 if weight_to_input <= 0:
                     break
@@ -135,8 +130,9 @@ def create_weights(reel, weight_to_input, wild_symbol, wild_weight, window_heigh
 
             if (reel_number == 5):
                 if cheap_pic_counter == 3:
-                    weight[i] += 3
-                    weight_to_input -= 3
+                    weight[i] += 1
+                    weight_to_input -= 1
+
 
                 if weight_to_input <= 0:
                     break
@@ -179,10 +175,10 @@ weights_3 = create_weights(reel_3, 3000, 11, 773, 3, 3)
 weights_4 = create_weights(reel_4, 3000, 11, 669, 3, 4)
 weights_5 = create_weights(reel_5, 3000, 11, 0, 3, 5)
 """
-weights_1 = create_weights(reel_1, 500, 11, 0, 3, 1)
-weights_2 = create_weights(reel_2, 600, 11, 0, 3, 2)
-weights_3 = create_weights(reel_3, 300, 11, 0, 3, 3)
-weights_4 = create_weights(reel_4, 300, 11, 0, 3, 4)
+weights_1 = create_weights(reel_1, 9000, 11, 0, 3, 1)
+weights_2 = create_weights(reel_2, 9000, 11, 0, 3, 2)
+weights_3 = create_weights(reel_3, 9000, 11, 0, 3, 3)
+weights_4 = create_weights(reel_4, 9000, 11, 0, 3, 4)
 weights_5 = create_weights(reel_5, 300, 11, 0, 3, 5)
 
 PrintSymbolWeight([reel_1, reel_2, reel_3, reel_4, reel_5],

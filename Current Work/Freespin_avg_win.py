@@ -93,47 +93,49 @@ def create_weights(reel, weight_to_input, wild_symbol, wild_weight, window_heigh
 
 
             if (reel_number == 1):
+                if reach_pic_counter == 3:
+                    weight[i] += 1
+                    weight_to_input -= 1
 
                 if weight_to_input <= 0:
                     break
 
 
             if (reel_number == 2):
-                if reach_pic_counter == 2:
+                if reach_pic_counter == 3:
                     weight[i] += 1
                     weight_to_input -= 1
-                if reach_pic_counter == 1:
-                    weight[i] += 5
-                    weight_to_input -= 5
-                if reach_pic_counter == 0:
-                    weight[i] += 6
-                    weight_to_input -= 6
                 if weight_to_input <= 0:
                     break
 
 
             if (reel_number == 3):
-                if cheap_pic_counter == 3:
-                    weight[i] += 4
-                    weight_to_input -= 4
+                if reach_pic_counter == 3:
+                    weight[i] += 1
+                    weight_to_input -= 1
 
                 if weight_to_input <= 0:
                     break
 
 
             if (reel_number == 4):
-                if reach_pic_counter == 3:
-                    weight[i] += 4
-                    weight_to_input -= 4
-
+                if reach_pic_counter == 1:
+                    weight[i] += 1
+                    weight_to_input -= 1
+                if reach_pic_counter == 2:
+                    weight[i] += 2
+                    weight_to_input -= 2
                 if weight_to_input <= 0:
                     break
 
 
             if (reel_number == 5):
-                if reach_pic_counter == 3:
+                if reach_pic_counter == 1:
                     weight[i] += 3
                     weight_to_input -= 3
+                if reach_pic_counter == 2:
+                    weight[i] += 1
+                    weight_to_input -= 1
 
                 if weight_to_input <= 0:
                     break
@@ -176,11 +178,11 @@ weights_3 = create_weights(reel_3, 3000, 11, 773, 3, 3)
 weights_4 = create_weights(reel_4, 3000, 11, 669, 3, 4)
 weights_5 = create_weights(reel_5, 3000, 11, 0, 3, 5)
 """
-weights_1 = create_weights(reel_1, 0, 11, 0, 3, 1)
-weights_2 = create_weights(reel_2, 300, 11, 0, 3, 2)
-weights_3 = create_weights(reel_3, 300, 11, 0, 3, 3)
-weights_4 = create_weights(reel_4, 300, 11, 0, 3, 4)
-weights_5 = create_weights(reel_5, 300, 11, 0, 3, 5)
+weights_1 = create_weights(reel_1, 900, 11, 0, 3, 1)
+weights_2 = create_weights(reel_2, 1500, 11, 0, 3, 2)
+weights_3 = create_weights(reel_3, 1500, 11, 0, 3, 3)
+weights_4 = create_weights(reel_4, 1500, 11, 0, 3, 4)
+weights_5 = create_weights(reel_5, 1500, 11, 0, 3, 5)
 
 PrintSymbolWeight([reel_1, reel_2, reel_3, reel_4, reel_5],
                   [weights_1, weights_2, weights_3, weights_4, weights_5])
